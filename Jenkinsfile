@@ -11,6 +11,7 @@ pipeline {
         }
         stage('sonar') {
             steps {
+                sh "dhskajlsa"
                 echo "Executiong sonar block"
             }   
         }
