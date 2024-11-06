@@ -4,8 +4,11 @@ pipeline {
     }
     stages {
         stage('Build') {
-            echo "welcome to jenkins pipeline"
-            error "I will print error message"
+           steps {
+             echo "welcome to jenkins pipeline"
+             error "I will print error message"
+           } 
+            
         }
     }
 }
