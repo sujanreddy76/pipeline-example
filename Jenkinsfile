@@ -9,6 +9,7 @@ pipeline {
                  echo "hello world"
                  sh 'date'
                  echo "executing my first stage"
+                 sh 'sleep 10'
             }
            
         }
@@ -24,6 +25,7 @@ pipeline {
                     //${variable} , ${env.variable}
                 else
                   println("Do learn ${course}")
+                  sleep 20 // this sleep 20 is equal to (sh 'sleep 20').
             }
         }
      }
