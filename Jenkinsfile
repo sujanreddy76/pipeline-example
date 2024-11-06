@@ -1,18 +1,13 @@
 pipeline {
     agent {
-        label 'java-label'
+        label 'java-node'
     }
     stages {
-        stage('Build') {
-           steps {
-             retry(3){
-                echo "welcome to jenkins pipeline"
-                error "I will print error message"
-             }
-             echo "Message: After 3 times"
-             
-           } 
-            
+        stage('Build'){
+            steps {
+                echo "Sleeping for 60 seconds"
+                sleep 60
+            }
         }
     }
 }
