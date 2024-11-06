@@ -12,7 +12,7 @@ pipeline {
             }
            
         }
-    }
+    
     stage('scriptblock') {
         steps {
             script {
@@ -25,5 +25,6 @@ pipeline {
                   println("Do learn K8S")
             }
         }
-    }
+     }
+   }
 }
