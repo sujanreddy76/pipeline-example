@@ -1,15 +1,12 @@
 pipeline {
     agent {
-        label 'java-node'
+        label 'java-label'
     }
     stages {
-        stage('Build'){
+        stage('Build') {
             steps {
-                timeout (time: 5, unit: 'SECONDS') {
-                    echo "Sleeping for 60 seconds"
-                    sleep 60
-                }
-                
+                echo "Welcome to tools demo"
+                sh 'mvn --version'
             }
         }
     }
