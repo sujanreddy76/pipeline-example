@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'java-label'
-    }
+    agent any
     tools {
         maven 'Maven_3.8.8' //This name should match to the name created under tool section
     }
