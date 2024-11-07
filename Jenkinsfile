@@ -1,21 +1,15 @@
 pipeline {
     agent {
-        label 'java-label'
-    }
-    environment {
-       NAME = "siva"
-       COURSE ="k8s"
+        label 'java-slave'
     }
     stages {
-        stage('Build') {
-            environment {
-                CLOUD = "GCP"
-                NAME = "Meghana"
-            }
+        stage('DockerBP'){
             steps {
-                echo "Welcome ${NAME}"
-                echo "you are enrolled to ${COURSE} course"
-                echo "you are certified in ${CLOUD}"
+                //nginx pull,change the name to myownname and push to my registry
+                docker pull nginx
+                // docker tag nginx sujanreddy76/nginx:b5
+                // docker push sujanreddy76/nginx:b5
+
             }
         }
     }
