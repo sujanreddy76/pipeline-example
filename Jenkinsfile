@@ -7,7 +7,11 @@ pipeline {
             steps {
                 //nginx pull,change the name to myownname and push to my registry
                 sh "docker pull nginx"
-                // docker tag nginx sujanreddy76/nginx:b5
+                echo "***********Printing images before changing the tag*************"
+                sh "docker images"
+                sh "docker tag nginx sujanreddy76/nginx:b5"
+                echo "***********Printing images after changing the tag*************"
+                sh "docker images"
                 // docker push sujanreddy76/nginx:b5
 
             }
