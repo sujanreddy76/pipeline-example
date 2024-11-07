@@ -13,7 +13,7 @@ pipeline {
                 echo "***********Printing images after changing the tag*************"
                 sh "docker images"
                 echo "******pushing the image to repo******"
-                sh docker "push sujanreddy76/nginx:b5"
+                sh "docker push sujanreddy76/nginx:b5"
 
             }
         }
