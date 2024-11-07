@@ -12,7 +12,8 @@ pipeline {
                 sh "docker tag nginx sujanreddy76/nginx:b5"
                 echo "***********Printing images after changing the tag*************"
                 sh "docker images"
-                // docker push sujanreddy76/nginx:b5
+                echo "******pushing the image to repo******"
+                sh docker "push sujanreddy76/nginx:b5"
 
             }
         }
