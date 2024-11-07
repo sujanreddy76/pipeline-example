@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'java-label'
+        label 'docker-slave'
     }
     stages {
         stage('DockerBP'){
