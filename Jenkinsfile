@@ -6,7 +6,7 @@ pipeline {
         stage('DockerBP'){
             steps {
                 //nginx pull,change the name to myownname and push to my registry
-                docker pull nginx
+                sh "docker pull nginx"
                 // docker tag nginx sujanreddy76/nginx:b5
                 // docker push sujanreddy76/nginx:b5
 
