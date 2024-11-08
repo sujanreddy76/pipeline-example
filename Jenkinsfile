@@ -1,16 +1,31 @@
 pipeline {
     agent {
-        label 'docker-slave'
-    }
-    environment {
-        //key =value
-        DOCKER_CREDS = credentials('dockerhub_creds') //username and password
+        label 'java-label'
     }
     stages {
-        stage('DockerBP'){
+        stage('Build') {
             steps {
-                echo "Deploying code in feature branch"
-
+                echo "Building the application"
+            }
+        }
+        stage('Sonar') {
+            steps {
+                echo "Executing Sonar Scans"
+            }
+        }
+         stage('DockerBuildNPush') {
+            steps {
+                echo "Building and pushing docker images"
+            }
+        }
+        stage('Devenv') {
+            steps {
+                echo "Deploying our application to dev"
+            }
+        }
+        stage('Testenv') {
+            steps {
+                echo "Deploying our application to test"
             }
         }
     }
