@@ -13,10 +13,13 @@ pipeline {
     }
     stages {
         stage('Firststage') {
-            echo "Welcome ${params.PERSON}"
-            echo "You enrolled to ${params.COURSE}"
-            echo "You are certified in ${params.CLOUD}"
-            echo "You are using ${CI_SERVER}"
+            steps {
+                 echo "Welcome ${params.PERSON}"
+                 echo "You enrolled to ${params.COURSE}"
+                 echo "You are certified in ${params.CLOUD}"
+                 echo "You are using ${CI_SERVER}"
+
+            }
         }
     }
 }
