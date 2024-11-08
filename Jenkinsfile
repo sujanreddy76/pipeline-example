@@ -29,11 +29,22 @@ pipeline {
         stage('deploy to stage env'){
             when {
                 expression {
-                     BRANCH_NAME == /(production|staging)/
+                     BRANCH_NAME == /(production|staging|main)/
                 }
             }
             steps {
                 echo 'deploying to '
+            }
+        }
+        stage('deploy to prod') {
+            when {
+                allOf {
+                    branch 'prodbranch'
+                    environment name: 'DEPLOY_TO', value: 'production'
+                }
+            }
+            steps {
+                echo 'deploying to prod'
             }
         }
 
