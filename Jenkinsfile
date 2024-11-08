@@ -28,7 +28,7 @@ pipeline {
         }
         stage('deploy to stage env'){
             when {
-                environment name: 'DEPLOY_TO' value
+                BRANCH_NAME == /(production|staging)/
             }
             steps {
                 echo 'deploying to '
