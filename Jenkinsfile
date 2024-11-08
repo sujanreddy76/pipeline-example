@@ -1,6 +1,6 @@
 pipeline {
     agent {
-       'java-slave'
+       label 'java-slave'
     }
     parameters {
        string (name: 'PERSON', defaultValue: 'Sujan', description: 'Enter Your Name')
