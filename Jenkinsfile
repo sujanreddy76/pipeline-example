@@ -1,31 +1,17 @@
 pipeline {
     agent {
-        label 'java-label'
+        label 'java-slave'
+    }
+    environment {
+        DEPLOY_TO = 'production'
     }
     stages {
         stage('Build') {
-            steps {
-                echo "Building the application"
+            when {
+                environment_name: 'DEPLOY_TO', value: 'production'
             }
-        }
-        stage('Sonar') {
             steps {
-                echo "Executing Sonar Scans"
-            }
-        }
-         stage('DockerBuildNPush') {
-            steps {
-                echo "Building and pushing docker images"
-            }
-        }
-        stage('Devenv') {
-            steps {
-                echo "Deploying our application to dev"
-            }
-        }
-        stage('Testenv') {
-            steps {
-                echo "Deploying our application to test"
+                echo 'building the project..'
             }
         }
     }
