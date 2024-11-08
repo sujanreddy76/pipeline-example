@@ -29,7 +29,7 @@ pipeline {
         stage('deploy to stage env'){
             when {
                 expression {
-                     BRANCH_NAME == /(production|staging|main)/
+                     branch 'main'
                 }
             }
             steps {
