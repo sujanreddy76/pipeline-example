@@ -2,51 +2,38 @@ pipeline {
     agent {
         label 'java-label'
     }
-    environment {
-        DEPLOY_TO = 'somename'
-    }
     stages {
         stage('Build') {
             steps {
-                echo 'building the project..'
+                echo 'building the project'
             }
         }
-        stage('sonar') {
-            steps {
-                echo 'running sonar scan..'
-            }
-        }
-        stage('deploy to dev') {
-            steps {
-                echo 'deploying to dev'
-            }
-        }
-        stage('deploy to qa'){
-            steps {
-                echo 'deploying to QA'
-            }
-        }
-        stage('deploy to stage env'){
-            when {
-                expression {
-                     branch 'main'
+        stage('Scans') {
+            parallel {
+                stage('Sonar') {
+                    steps {
+                        echo 'running sonar scan'
+                        sleep 10
+                    }
+                }
+                stage('checkmarx') {
+                    steps {
+                        echo 'running checkmarx scan'
+                        sleep 10
+                    }
+                }
+                stage('fortify') {
+                    steps {
+                        echo 'running fortify scan'
+                        sleep 10
+                    }
                 }
             }
+        }
+        stage('Deploy') {
             steps {
-                echo 'deploying to '
+                echo 'Deploy the project'
             }
         }
-        stage('deploy to prod') {
-            when {
-                anyOf {
-                    branch 'prodbranch'
-                    environment name: 'DEPLOY_TO', value: 'production'
-                }
-            }
-            steps {
-                echo 'deploying to prod'
-            }
-        }
-
     }
 }
