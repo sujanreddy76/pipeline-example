@@ -1,39 +1,22 @@
 pipeline {
     agent {
-        label 'java-label'
+       'java-slave'
+    }
+    parameters {
+       string (name: 'PERSON', defaultValue: 'Sujan', description: 'Enter Your Name')
+       choice (name: 'COURSE', choices: ['k8s', 'jenkins', 'docker'], description: 'Select the Course')
+       booleanParam(name: 'CLOUD', defaultValue: true, description: 'Do you want to be certified in GCP?')
+
+    }
+    environment {
+        CI_SERVER = 'Jenkins'
     }
     stages {
-        stage('Build') {
-            steps {
-                echo 'building the project'
-            }
-        }
-        stage('Scans') {
-            parallel {
-                stage('Sonar') {
-                    steps {
-                        echo 'running sonar scan'
-                        sleep 10
-                    }
-                }
-                stage('checkmarx') {
-                    steps {
-                        echo 'running checkmarx scan'
-                        sleep 10
-                    }
-                }
-                stage('fortify') {
-                    steps {
-                        echo 'running fortify scan'
-                        sleep 10
-                    }
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploy the project'
-            }
+        stage('Firststage') {
+            echo "Welcome ${params.PERSON}"
+            echo "You enrolled to ${params.COURSE}"
+            echo "You are certified in ${params.CLOUD}"
+            echo "You are using ${CI_SERVER}"
         }
     }
 }
