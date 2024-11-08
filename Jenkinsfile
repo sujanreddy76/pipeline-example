@@ -38,7 +38,7 @@ pipeline {
         }
         stage('deploy to prod') {
             when {
-                allOf {
+                anyOf {
                     branch 'prodbranch'
                     environment name: 'DEPLOY_TO', value: 'production'
                 }
